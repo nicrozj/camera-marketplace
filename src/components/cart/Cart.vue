@@ -8,8 +8,10 @@ const { toggleVisibleCart, isCartVisible } = useModals();
 <template>
     <Transition enter-from-class="opacity-0 scale-[1.05]" leave-to-class="opacity-0 scale-[1.05]">
         <section v-if="isCartVisible"
-            class="fixed flex flex-col items-stretch w-full h-screen bg-dark-800/30 transition duration-200">
+            @click="toggleVisibleCart"
+            class="fixed top-0 left-0 flex flex-col items-stretch w-full h-screen bg-dark-800/30 transition duration-200">
             <div
+                @click.stop
                 class="absolute flex flex-col justify-between gap-4 p-3 w-1/4 min-w-96 h-full rounded-l-xl bg-white top-0 right-0">
                 <div class="flex flex-col gap-4 mt-4">
                     <UH3 class="text-center">Корзина</UH3>
