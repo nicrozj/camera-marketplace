@@ -1,0 +1,5 @@
+http://shop.zhorkinigor.ru {
+    root * /web/camera-markeplace
+    try_files {path} index.html
+    file_server
+}

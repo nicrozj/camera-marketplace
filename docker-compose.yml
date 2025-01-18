@@ -1,0 +1,13 @@
+services:
+  proxy:
+    container_name: camera-markeplace-proxy
+    restart: always
+    image: ghcr.io/nicrozj/camera-markeplace-proxy:latest
+    networks:
+      - docker_network
+    volumes:
+      - ./data/caddy:/data/caddy
+      
+networks:
+  docker_network:
+    external: true
