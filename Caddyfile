@@ -1,5 +1,5 @@
 http://shop.zhorkinigor.ru {
-    root * /web/camera-markeplace
+    root * /web/camera-marketplace
     try_files {path} index.html
     file_server
 }

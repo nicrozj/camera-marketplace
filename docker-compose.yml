@@ -1,8 +1,8 @@
 services:
   proxy:
-    container_name: camera-markeplace-proxy
+    container_name: camera-marketplace-proxy
     restart: always
-    image: ghcr.io/nicrozj/camera-markeplace-proxy:latest
+    image: ghcr.io/nicrozj/camera-marketplace-proxy:latest
     networks:
       - docker_network
     volumes:
