@@ -5,9 +5,6 @@ services:
     image: ghcr.io/nicrozj/camera-marketplace-proxy:latest
     networks:
       - docker_network
-    ports:
-      - 9080:80
-      - 9443:443
     volumes:
       - ./data/caddy:/data/caddy
       
