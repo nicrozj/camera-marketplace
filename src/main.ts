@@ -1,6 +1,6 @@
 import { createApp } from "vue";
 import { createRouter, createWebHistory, RouterView } from "vue-router";
-import Index from "./pages/index.vue";
+import Index from "./pages/main/index.vue";
 
 import "./main.css";
 
