@@ -31,7 +31,7 @@ const { toggleVisibleCart, isCartVisible } = useModals();
                 <IconButton @click="toggleVisibleCart" icon-title="shopping_cart">
                     Корзина
                 </IconButton>
-                <IconButton icon-title="account_circle">
+                <IconButton href="/profile" icon-title="account_circle">
                     Профиль
                 </IconButton>
             </div>

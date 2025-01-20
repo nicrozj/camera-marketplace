@@ -6,14 +6,14 @@ interface Props {
 const { iconTitle="menu" } = defineProps<Props>();
 </script>
 <template>
-    <button class="flex flex-col gap-1 items-center">
+    <a class="flex flex-col gap-1 items-center cursor-pointer">
         <span class="material-symbols-outlined animate-icon text-green-500 text-3xl">
             {{ iconTitle}}
         </span>
         <span>
             <slot></slot>
         </span>
-    </button>
+    </a>
 </template>
 <style>
 .animate-icon {
