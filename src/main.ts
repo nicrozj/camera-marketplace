@@ -4,6 +4,9 @@ import Index from "./pages/main/index.vue";
 import Profile from "./pages/profile/Profile.vue";
 
 import "./main.css";
+import { createPinia } from "pinia";
+
+const pinia = createPinia();
 
 const router = createRouter({
   history: createWebHistory(),
@@ -13,4 +16,5 @@ const router = createRouter({
   ],
 });
 
-createApp(RouterView).use(router).mount("body");
+
+createApp(RouterView).use(router).use(pinia).mount("body");
