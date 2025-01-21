@@ -3,14 +3,47 @@ import UH1 from '@/components/global/UH1.vue';
 import UH3 from '@/components/global/UH3.vue';
 import Header from '@/components/header/Header.vue';
 
+import AccountPaymentsSection from './section_content/AccountPaymentsSection.vue';
+import GiftCardsSection from './section_content/GiftCardsSection.vue';
+import OrderHistorySection from './section_content/OrderHistorySection.vue';
+import PersonalInfoSection from './section_content/personalInfoSection.vue';
+
+import { ref } from 'vue';
+
+const sections = {
+    "personalInfo": {
+        title: "Личная информация", 
+        content: PersonalInfoSection, 
+        description: "Редактируйте информацию о себе, включая номер телефона и адрес электронной почты, по которым с Вами можно связаться" 
+    },
+    "accountPayments": { 
+        title: "Счета и платежи", 
+        content: AccountPaymentsSection, 
+        description: "Управляйте своими счетами и методами оплаты. Добавляйте или удаляйте карты, просматривайте историю платежей и настраивайте автоматические списания." 
+    },
+    "orderHistory": { 
+        title: "История заказов", 
+        content: OrderHistorySection,
+        description: "Просматривайте список всех ваших заказов. Отслеживайте статус выполнения, просматривайте детали покупок и скачивайте счета-фактуры." 
+    },
+    "giftCards": { 
+        title: "Подарочные карты", 
+        content: GiftCardsSection,
+        description: "Управляйте своими подарочными картами. Проверяйте баланс, активируйте новые карты и просматривайте историю использования." 
+    },
+}
+
+type Sections = keyof typeof sections;
+const idActiveSection = ref<Sections>("personalInfo");
+
 </script>
 
 <template>
     <Header />
-    <main class="max-w-[1200px] mx-auto mt-10 px-4">
+    <main class="max-w-[1200px] mx-auto mt-32 px-4">
         <section class="flex flex-col gap-6">
             <div class="flex justify-between">
-                <UH1>Zoomify Профиль</UH1>
+                <UH1>Профиль</UH1>
                 <button
                     class="bg-dark-800 text-white rounded-full px-4 py-2 hover:scale-105 transition-all">Выйти</button>
             </div>
@@ -21,64 +54,28 @@ import Header from '@/components/header/Header.vue';
                         <UH3>Игорь Жоркин</UH3>
                         <span class="text-dark-200">zhorkinigor@yandex.ru</span>
                     </div>
-                    <div class="mt-20 flex flex-col gap-6">
-                        <a href="">
-                            <UH3>Личная информация</UH3>
-                        </a>
-                        <a href="">
-                            <UH3>Счета и платежи</UH3>
-                        </a>
-                        <a href="">
-                            <UH3>История заказов</UH3>
-                        </a>
-                        <a href="">
-                            <UH3>Подарочные карты</UH3>
-                        </a>
+                    <div class="mt-20 flex flex-col items-start gap-6">
+                        <button @click="idActiveSection = 'personalInfo'">
+                            <UH3 class="hover:text-gray-500 transition-all">Личная информация</UH3>
+                        </button>
+                        <button @click="idActiveSection = 'accountPayments'">
+                            <UH3 class="hover:text-gray-500 transition-all">Счета и платежи</UH3>
+                        </button>
+                        <button @click="idActiveSection = 'orderHistory'">
+                            <UH3 class="hover:text-gray-500 transition-all">История заказов</UH3>
+                        </button>
+                        <button @click="idActiveSection = 'giftCards'">
+                            <UH3 class="hover:text-gray-500 transition-all">Подарочные карты</UH3>
+                        </button>
                     </div>
                 </div>
                 <div class="flex flex-col gap-10 w-full">
                     <div class="flex flex-col gap-2">
-                        <UH1>Личная информация</UH1>
-                        <p class="text-dark-200">Редактируйте информацию о себе, включая номер телефона и адрес
-                            электронной почты, по которым с Вами можно связаться</p>
+                        <UH1>{{ sections[idActiveSection].title }}</UH1>
+                        <p class="text-dark-200">{{ sections[idActiveSection].description }}</p>
                     </div>
                     <div class="grid grid-cols-2 gap-4">
-                        <div class="flex flex-col gap-1 w-full border border-gray-200 min-h-48 px-4 py-10 rounded-lg">
-                            <div class="flex justify-between items-center">
-                                <UH3>Имя</UH3>
-                                <span class="material-symbols-outlined text-4xl text-green-500">
-                                    account_circle
-                                </span>
-                            </div>
-                            <p class="text-dark-200">Игорь Жоркин</p>
-                        </div>
-                        <div class="flex flex-col gap-1 w-full border border-gray-200 min-h-48 px-4 py-10 rounded-lg">
-                            <div class="flex justify-between items-center">
-                                <UH3>Дата рождения</UH3>
-                                <span class="material-symbols-outlined text-4xl text-green-500">
-                                    calendar_month
-                                </span>
-                            </div>
-                            <p class="text-dark-200">04.06.2006</p>
-                        </div>
-                        <div class="flex flex-col gap-1 w-full border border-gray-200 min-h-48 px-4 py-10 rounded-lg">
-                            <div class="flex justify-between items-center">
-                                <UH3>Регион</UH3>
-                                <span class="material-symbols-outlined text-4xl text-green-500">
-                                    language
-                                </span>
-                            </div>
-                            <p class="text-dark-200">Алтайский край</p>
-                        </div>
-                        <div class="flex flex-col gap-1 w-full border border-gray-200 min-h-48 px-4 py-10 rounded-lg">
-                            <div class="flex justify-between items-center">
-                                <UH3>Электронная почта</UH3>
-                                <span class="material-symbols-outlined text-4xl text-green-500">
-                                    mail
-                                </span>
-                            </div>
-                            <p class="text-dark-200">zhorkinigor@yandex.ru</p>
-                        </div>
+                        <component :is="sections[idActiveSection].content" />
                     </div>
                 </div>
             </div>

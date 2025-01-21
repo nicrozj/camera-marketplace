@@ -9,7 +9,7 @@ const { toggleVisibleCart, isCartVisible } = useModals();
 </script>
 
 <template>
-    <header class="shadow-md h-20 flex items-center">
+    <header class="shadow-md h-20 z-50 top-0 w-full flex items-center fixed bg-white/85 backdrop-blur-lg">
         <nav class="max-w-[1200px] w-full h-full mx-auto flex justify-between items-center">
             <div class="flex gap-4 items-center h-full">
                 <a href="/" class="text-2xl font-bitter font-semibold">
