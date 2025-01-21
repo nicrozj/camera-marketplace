@@ -6,7 +6,7 @@ import Header from '@/components/header/Header.vue';
 import AccountPaymentsSection from './section_content/AccountPaymentsSection.vue';
 import GiftCardsSection from './section_content/GiftCardsSection.vue';
 import OrderHistorySection from './section_content/OrderHistorySection.vue';
-import PersonalInfoSection from './section_content/personalInfoSection.vue';
+import PersonalInfoSection from './section_content/PersonalInfoSection.vue';
 
 import { ref } from 'vue';
 
