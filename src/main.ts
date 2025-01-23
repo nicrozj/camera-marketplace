@@ -5,6 +5,7 @@ import Profile from "./pages/profile/Profile.vue";
 
 import "./main.css";
 import { createPinia } from "pinia";
+import Cart from "./pages/cart/Cart.vue";
 
 const pinia = createPinia();
 
@@ -12,7 +13,8 @@ const router = createRouter({
   history: createWebHistory(),
   routes: [
     { path: "/", component: Index },
-    { path: "/profile", component: Profile }
+    { path: "/profile", component: Profile },
+    { path: "/cart", component: Cart },
   ],
 });
 

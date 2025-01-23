@@ -14,7 +14,6 @@ const modalsStore = useModals();
                 <a href="/" class="text-2xl font-bitter font-semibold">
                     Zoomify
                 </a>
-                <SearchInput class="hidden md:flex" />
             </div>
             <div class="hidden xl:flex gap-4 items-center">
                 <HeaderLink>Самовывоз</HeaderLink>
@@ -25,13 +24,10 @@ const modalsStore = useModals();
             </div>
             <div class="hidden md:flex gap-4">
                 <IconButton icon-title="favorite">
-                    Избранное
                 </IconButton>
-                <IconButton @click="" icon-title="shopping_cart">
-                    Корзина
+                <IconButton href="/cart" icon-title="shopping_cart">
                 </IconButton>
                 <IconButton href="/profile" icon-title="account_circle">
-                    Профиль
                 </IconButton>
             </div>
             <button @click="modalsStore.toggleVisibleNavModal()" class="md:hidden">

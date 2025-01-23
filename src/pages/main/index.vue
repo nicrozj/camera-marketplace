@@ -13,7 +13,6 @@ const modalsStore = useModals();
 <template>
   <Header />
   <main class="max-w-[1200px] mx-auto mt-32 flex flex-col gap-10 mb-40 px-4">
-    <MainBanner />
     <Categories />
     <NavModal />
   </main>
