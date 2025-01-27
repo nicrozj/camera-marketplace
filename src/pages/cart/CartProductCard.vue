@@ -39,7 +39,7 @@ const cost = computed(() => count.value * price);
                         @click="decrementCount()"
                         class="size-6 rounded-lg bg-gray-100 flex justify-center items-center">-</button>
                     {{ count }}
-                    <button 
+                    <button
                         @click="incrementCount()"
                         class="size-6 rounded-lg bg-gray-100 flex justify-center items-center">+</button>
                 </div>
