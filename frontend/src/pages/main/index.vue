@@ -6,7 +6,6 @@ import Categories from "./categories/Categories.vue";
 import NavModal from "@/components/modals/NavModal.vue";
 
 import { useModals } from "../../stores/useModals";
-import TopProducts from "@/components/blocks/TopProducts.vue";
 
 const modalsStore = useModals();
 </script>
@@ -15,7 +14,6 @@ const modalsStore = useModals();
   <Header />
   <main class="max-w-[1200px] mx-auto mt-32 flex flex-col gap-10 mb-40 px-4">
     <Categories />
-    <TopProducts></TopProducts>
     <NavModal />
   </main>
 </template>
