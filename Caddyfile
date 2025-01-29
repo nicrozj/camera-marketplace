@@ -1,5 +1,14 @@
 http://shop.zhorkinigor.ru {
-    root * /web/camera-marketplace
-    try_files {path} index.html
-    file_server
+    handle_path /api/* {
+        rewrite * /{path}.php
+        root * /web/php
+        php_fastcgi php:9000
+        file_server
+    }
+
+    handle {
+        root * /web/website
+        try_files {path} /index.html
+        file_server
+    }
 }

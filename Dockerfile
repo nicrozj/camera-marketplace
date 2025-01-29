@@ -1,10 +1,15 @@
-FROM node:lts-alpine AS builder
+FROM node:18 AS builder
 WORKDIR /build
-COPY package.json package-lock.json ./
+COPY frontend/package*.json .
 RUN npm install
-COPY . .
+COPY frontend .
 RUN npm run build
 
-FROM caddy:2.8.4-alpine AS runner
+FROM caddy:alpine AS caddy-runner
+COPY --from=builder /build/dist /web/website
 COPY Caddyfile /etc/caddy/Caddyfile
-COPY --from=builder /build/dist /web/camera-marketplace
+
+FROM php:8.2-fpm as php-runner
+RUN docker-php-ext-install pdo pdo_mysql
+WORKDIR /web/php
+CMD ["php-fpm"]
