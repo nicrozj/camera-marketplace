@@ -1,20 +1,20 @@
 services:
   proxy:
-    container_name: caddy-proxy
-    build:
-      context: .
-      target: caddy-runner
+    container_name: camera-marketplace-proxy
+    restart: always
+    image: ghcr.io/nicrozj/camera-marketplace-proxy:latest
+    networks:
+      - docker_network
     volumes:
       - ./data/caddy:/data/caddy
-    ports:
-      - 80:80
 
   php:
     container_name: php-container
     restart: always
     build:
       context: .
-      target: php-runner
+      dockerfile: Dockerfile
+      target: php-runner  # Используем таргет php-runner из Dockerfile
     volumes:
       - ./backend:/web/php
     environment:
@@ -23,10 +23,13 @@ services:
       - DB_DATABASE=marketplace
       - DB_USER=root
       - DB_PASSWORD=root12345
+    networks:
+      - docker_network
 
   mysql:
     image: mysql:8.0
     container_name: mysql-container
+    restart: always
     ports:
       - "3306:3306"
     environment:
@@ -36,6 +39,12 @@ services:
       MYSQL_PASSWORD: root12345
     volumes:
       - mysql_data:/var/lib/mysql
+    networks:
+      - docker_network
 
 volumes:
   mysql_data:
+
+networks:
+  docker_network:
+    external: true
