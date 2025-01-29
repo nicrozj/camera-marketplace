@@ -12,4 +12,3 @@ COPY Caddyfile /etc/caddy/Caddyfile
 FROM php:8.2-fpm as php-runner
 RUN docker-php-ext-install pdo pdo_mysql
 WORKDIR /web/php
-CMD ["php-fpm"]
