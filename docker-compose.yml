@@ -14,7 +14,6 @@ services:
     restart: always
     build:
       context: .
-      dockerfile: Dockerfile
       target: php-runner
     volumes:
       - ./backend:/web/php
