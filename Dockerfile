@@ -1,17 +1,18 @@
-# Сборка фронтенда
-FROM node:18 AS builder
+# Фронтенд
+FROM node:18 AS frontend-builder
 WORKDIR /build
 COPY frontend/package*.json .
 RUN npm install
 COPY frontend .
 RUN npm run build
 
-# Сборка Caddy (прокси)
-FROM caddy:2.8.4-alpine AS runner
+#Caddy
+FROM caddy:alpine AS proxy
+COPY --from=frontend-builder /build/dist /web/website
 COPY Caddyfile /etc/caddy/Caddyfile
-COPY --from=builder /build/dist /web/camera-marketplace
 
-# Сборка PHP backend
-FROM php:8.2-fpm AS php-runner
+# PHP
+FROM php:8.2-fpm AS php
 RUN docker-php-ext-install pdo pdo_mysql
 WORKDIR /web/php
+COPY backend .
